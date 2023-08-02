@@ -23,9 +23,10 @@ data "openstack_compute_flavor_v2" "m1_medium" {
 }
 
 resource "openstack_compute_instance_v2" "my_instance" {
-  name = "matt-tf-test"
+  name = "my-tf-test"
   flavor_id = data.openstack_compute_flavor_v2.m1_medium.id
   security_groups = ["default"]
+  key_pair = "my_key_pair_name"
 
   block_device {
     uuid = data.openstack_images_image_v2.rocky_9.id
